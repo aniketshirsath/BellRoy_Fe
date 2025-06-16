@@ -72,7 +72,7 @@
 <script>
     function Fetchdata()
     {
-       fetch("https://bellroy-server.onrender.com/cart")
+       fetch("https://bellroy-be.onrender.com/cart")
   
     .then((res)=>res.json())
     .then((data)=>CardList(data))
@@ -116,7 +116,7 @@
 
     function datapproduct(id)
     {
-      fetch(`http://localhost:3000/cart/${id}`,{
+      fetch(`https://bellroy-be.onrender.com/cart/${id}`,{
         method:"DELETE",
       })
       .then((res)=>res.json())
