@@ -124,5 +124,43 @@
       .catch((err)=>alert("worng"))
     }
   
-    
+    document.addEventListener("click", (e) => {
+  // Delete button
+  if (e.target.classList.contains("delete")) {
+    datapproduct(e.target.dataset.id);
+  }
+
+  // Add to Cart button
+  if (e.target.classList.contains("add-to-cart")) {
+    const title = e.target.dataset.title;
+    const price = e.target.dataset.price;
+    const description = e.target.dataset.description;
+    const image = e.target.dataset.image;
+
+    const cartItem = {
+      title,
+      price,
+      description,
+      image: [image] // API is expecting array probably
+    };
+
+    fetch("https://bellroy-server.onrender.com/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("Item Added to Cart");
+        Fetchdata(); // Optional: refresh cart display
+      })
+      .catch((err) => {
+        alert("Something went wrong");
+        console.log(err);
+      });
+  }
+});
+
    </script>
