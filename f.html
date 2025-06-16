@@ -172,7 +172,7 @@
 <script>
   function Fetchdata()
   {
-     fetch("https://bellroy-server.onrender.com/product")
+     fetch("https://bellroy-be.onrender.com/product")
 
   .then((res)=>res.json())
   .then((data)=>CardList(data))
@@ -217,12 +217,12 @@
       let id=event.target.dataset.id
       // console.log(id);
       // console.log(id)
-      fetch(`https://bellroy-server.onrender.com/product/${id}`)
+      fetch(`https://bellroy-be.onrender.com/product/${id}`)
       .then((res)=>res.json())
       .then((data)=>{
         // console.log(data)
 
-        fetch("https://bellroy-server.onrender.com/cart",{
+        fetch("https://bellroy-be.onrender.com/cart",{
           method:"POST",
           headers:{
             "Content-Type":"application/json",          
